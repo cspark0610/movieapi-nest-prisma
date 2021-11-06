@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Movie {
+  id            Int          @id @unique @default(autoincrement())
+  title         String
+  description   String?
+  stock         Int
+  rentalPrice   Int
+  salePrice     Int
+  available     Boolean      @default(true)
+  sale          Sale?        @relation(fields: [id], references: [id], onUpdate: NoAction, onDelete: Cascade)
+  rental        Rental?      @relation(fields: [id], references: [id], onUpdate: NoAction, onDelete: Cascade)
+  like          Like?        @relation(fields: [id], references: [id], onUpdate: NoAction, onDelete: Cascade)
+  Transaction   Transaction? @relation(fields: [transactionId], references: [id])
+  transactionId Int?
+}
+
+model Sale {
+  id            Int      @id @unique @default(autoincrement())
+  movieId       Movie[]
+  customerEmail String
+  price         Int
+  createdAt     DateTime @default(now())
+}
+
+model Rental {
+  id            Int      @id @unique @default(autoincrement())
+  movieId       Movie[]
+  customerEmail String
+  price         Int
+  createdAt     DateTime @default(now())
+}
+
+model Like {
+  id        Int     @id @unique @default(autoincrement())
+  movieId   Movie[]
+  likes     Int
+  customers String
+}
+
+model Transaction {
+  id        Int     @id @unique @default(autoincrement())
+  movieId   Movie[]
+  customers String
+}

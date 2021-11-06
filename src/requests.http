@@ -1,0 +1,66 @@
+POST http://localhost:8000/movies
+Content-Type: application/json
+
+{
+    "title": "Titanic",
+    "description": "blavblabla",
+    "stock": 0,
+    "rentalPrice": 8,
+    "salePrice": 55,
+    "available": false
+}
+
+###
+GET http://localhost:8000/movies
+Content-Type: application/json
+
+### get one and available
+GET http://localhost:8000/movies/4
+Content-Type: application/json
+
+### patch a movie which is anavailable
+
+PATCH http://localhost:8000/movies/4
+Content-Type: application/json
+
+{
+    "description": "new movie"
+}
+
+### patch a movie which is available
+
+PATCH http://localhost:8000/movies/1
+Content-Type: application/json
+
+{
+    "description": "new movie"
+}
+
+### put a movie which is available
+
+PUT http://localhost:8000/movies/2
+Content-Type: application/json
+
+{
+    "title": "LALALALALA",
+    "description": "blavblablaSKN",
+    "stock": 50,
+    "rentalPrice": 9,
+    "salePrice": 35
+}
+
+### remove a movie with id
+
+DELETE http://localhost:8000/movies/4
+Content-Type: application/json
+
+### find by sendiing Req object
+
+GET  http://localhost:8000/movies?size=3&page=1&sort=description,asc&unavailable=false
+Content-Type: application/json
+
+### find available movies (only send unavailable variable)
+
+GET http://localhost:8000/movies/true
+Content-Type: application/json
+
