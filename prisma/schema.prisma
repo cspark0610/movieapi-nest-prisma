@@ -11,45 +11,48 @@ generator client {
 }
 
 model Movie {
-  id            Int          @id @unique @default(autoincrement())
-  title         String
-  description   String?
-  stock         Int
-  rentalPrice   Int
-  salePrice     Int
-  available     Boolean      @default(true)
-  sale          Sale?        @relation(fields: [id], references: [id], onUpdate: NoAction, onDelete: Cascade)
-  rental        Rental?      @relation(fields: [id], references: [id], onUpdate: NoAction, onDelete: Cascade)
-  like          Like?        @relation(fields: [id], references: [id], onUpdate: NoAction, onDelete: Cascade)
-  Transaction   Transaction? @relation(fields: [transactionId], references: [id])
-  transactionId Int?
+  id          Int           @id @default(autoincrement())
+  title       String
+  description String?
+  stock       Int
+  rentalPrice Int
+  salePrice   Int
+  available   Boolean       @default(true)
+  sale        Sale[]
+  rental      Rental[]
+  like        Like[]
+  Transaction Transaction[]
 }
 
 model Sale {
-  id            Int      @id @unique @default(autoincrement())
-  movieId       Movie[]
+  id            Int      @id @default(autoincrement())
+  saleId        Int?
+  movieId       Movie?   @relation(fields: [saleId], references: [id])
   customerEmail String
   price         Int
   createdAt     DateTime @default(now())
 }
 
 model Rental {
-  id            Int      @id @unique @default(autoincrement())
-  movieId       Movie[]
+  id            Int      @id @default(autoincrement())
+  rentalId      Int?
+  movieId       Movie?   @relation(fields: [rentalId], references: [id])
   customerEmail String
   price         Int
   createdAt     DateTime @default(now())
 }
 
 model Like {
-  id        Int     @id @unique @default(autoincrement())
-  movieId   Movie[]
+  id        Int    @id @default(autoincrement())
+  likeId    Int?
+  movieId   Movie? @relation(fields: [likeId], references: [id])
   likes     Int
   customers String
 }
 
 model Transaction {
-  id        Int     @id @unique @default(autoincrement())
-  movieId   Movie[]
-  customers String
+  id            Int    @id @default(autoincrement())
+  transactionId Int?
+  movieId       Movie? @relation(fields: [transactionId], references: [id])
+  customers     String
 }
