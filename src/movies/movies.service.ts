@@ -116,4 +116,16 @@ export class MoviesService {
       });
     }
   }
+  
+    async findByTitle(titleName: string): Promise<any> {
+    //find all the movies where movie title parameter contains titleName
+
+    return this.prisma.movie.findMany({
+      where: {
+        title: {
+          contains: titleName,
+        },
+      },
+    });
+  }
 }
