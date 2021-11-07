@@ -5,6 +5,4 @@ export class Movie {
   rentalPrice: number;
   salePrice: number;
   available: boolean;
-  createdAt: Date;
-  updatedAt: Date;
 }
