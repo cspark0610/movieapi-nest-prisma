@@ -12,7 +12,7 @@ export class LikesService {
     const movie = await this.prisma.movie.findUnique({
       where: { id: movieId }
     });
-    if (movie.available) {
+    if (movie.stock > 0) {
       const arrayOfCustomersEmails = [];
       arrayOfCustomersEmails.push(customerEmail);
       const newLike = {
