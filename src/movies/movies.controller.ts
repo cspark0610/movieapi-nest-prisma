@@ -38,4 +38,9 @@ export class MoviesController {
   findAllAvailable(@Param('unavailable') { unavailable }) {
     return this.moviesService.findAllAvailable(unavailable);
   }
+   // get by title parameter,
+  @Get("/title/:titleName")
+  findByTitle(@Param("titleName") titleName: string) {
+    return this.moviesService.findByTitle(titleName);
+  }
 }
