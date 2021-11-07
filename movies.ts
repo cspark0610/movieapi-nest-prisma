@@ -1,18 +1,50 @@
 export const movies = [
   {
-    title: 'Amazing Spiderman',
-    description: 'Another Spiderman Movie',
+    title: "Amazing Spiderman",
+    description: "Another Spiderman Movie",
     stock: 10,
     rentalPrice: 25,
     salePrice: 90,
-    available: true
+    available: true,
   },
   {
-    title: 'APPLAUDO',
-    description: 'SICK OF MAKING CHALLENGES? TRY APPLAUDO ONE',
+    title: "APPLAUDO1",
+    description: "....2",
+    stock: 100,
+    rentalPrice: 25,
+    salePrice: 90,
+    available: true,
+  },
+  {
+    title: "APPLAUDO2",
+    description: "....3",
     stock: 10,
     rentalPrice: 25,
     salePrice: 90,
-    available: true
-  }
+    available: true,
+  },
+  {
+    title: "APPLAUDO4",
+    description: "....4",
+    stock: 10,
+    rentalPrice: 25,
+    salePrice: 90,
+    available: true,
+  },
+  {
+    title: "APPLAUDO5",
+    description: "....5",
+    stock: 10,
+    rentalPrice: 25,
+    salePrice: 90,
+    available: true,
+  },
+  {
+    title: "APPLAUDO6",
+    description: "....6",
+    stock: 10,
+    rentalPrice: 25,
+    salePrice: 90,
+    available: true,
+  },
 ];
