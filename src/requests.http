@@ -2,23 +2,16 @@ POST http://localhost:8000/movies
 Content-Type: application/json
 
 {
-    "title": "Titanic",
-    "description": "blavblabla",
-    "stock": 0,
-    "rentalPrice": 8,
-    "salePrice": 55,
-    "available": false
+    "title": "AVATAR",
+    "description": "avatar the new movie",
+    "stock": 60,
+    "rentalPrice": 5,
+    "salePrice": 35,
+    "available": true
 }
 
-###
-GET http://localhost:8000/movies
-Content-Type: application/json
 
-### get one and available
-GET http://localhost:8000/movies/4
-Content-Type: application/json
-
-### patch a movie which is anavailable
+### patch a movie 
 
 PATCH http://localhost:8000/movies/4
 Content-Type: application/json
@@ -56,7 +49,7 @@ Content-Type: application/json
 
 ### find by sendiing Req object
 
-GET  http://localhost:8000/movies?size=3&page=1&sort=description,asc&unavailable=false
+GET  http://localhost:8000/movies?sort=description,asc&unavailable=false&size=3&page=1
 Content-Type: application/json
 
 ### find available movies (only send unavailable variable)
@@ -64,3 +57,43 @@ Content-Type: application/json
 GET http://localhost:8000/movies/true
 Content-Type: application/json
 
+### /sales POST
+
+POST http://localhost:8000/sales
+Content-Type: application/json
+
+{
+    "movieId": 2,
+    "customerEmail": "juan3@gmail.com"
+}
+
+
+### /rentals POST
+
+POST http://localhost:8000/rentals
+Content-Type: application/json
+
+{
+    "movieId": 6,
+    "customerEmail": "carlos@sendmail.com"
+}
+
+### GET BY TITLE 
+
+GET http://localhost:8000/movies/title/laudo
+Content-Type: application/json
+
+### post likes /likes
+
+POST http://localhost:8000/likes
+Content-Type: application/json
+
+{
+  "movieId": 3,
+  "customerEmail":"carlos@park.com"
+}    
+
+### GET transsactions
+
+GET http://localhost:8000/transactions/movies/3?from=2021-01-01&to=2021-12-31
+Content-Type: application/json
